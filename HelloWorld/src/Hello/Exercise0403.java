@@ -10,6 +10,6 @@ public class Exercise0403 {
 				continue;
 			}
 			sum += i;
-		}System.out.println("3의 배수의 합:" + sum);
+		}System.out.println("3의 배수의 합: " + sum);
 	}
 }
