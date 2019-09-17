@@ -32,6 +32,21 @@ public class ArrayTest {
 			System.out.println("입력된 intAry의 값은" + intAry[i]);
 
 		}
-
+//		int a,b, result = 0;
+//		
+//		System.out.println("첬번째 갑을 입력.");
+//		a = sc.nextInt();
+//		System.out.println("두번째 값을 입력.");
+//		b = sc.nextInt();
+////		if (a > b)
+////				result = a;
+////		else
+////				result = b;
+//		result = (a > b ? a : b);
+//		
+//		System.out.println("두 수 중에서 큰 수는" + result);
+		
+		
+		
 	}
 }
