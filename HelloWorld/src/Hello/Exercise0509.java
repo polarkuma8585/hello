@@ -18,12 +18,12 @@ public class Exercise0509 {
 			int selectNo = scanner.nextInt();
 
 			if (selectNo == 1) {
-				System.out.println("학생수> ");
+				System.out.print("학생수> ");
 				studentNum = scanner.nextInt();
 				scores = new int[studentNum];   //비어있는 scores 배열에 학생수 입력값의 배열 추가.
 			} else if (selectNo == 2) {
 				for (int i = 0; i < scores.length; i++) {
-					System.out.println("scores [" + i + "]> ");
+					System.out.print("scores [" + i + "]> ");
 					scores[i] = scanner.nextInt();
 				}
 			} else if (selectNo == 3) {
@@ -38,9 +38,9 @@ public class Exercise0509 {
 					max = max > scores[i] ? max : scores[i]; // 최고점수를 max에 대입
 					sum += scores[i];  // avg 계산을 위한 합 도출
 				}
-				avg = (double) sum / studentNum;  // avg가 실수 이기때문에 sum을 실수로 맞춰줌.
+				avg = (double) sum / scores.length;  // avg가 실수 이기때문에 sum을 실수로 맞춰줌.
 				System.out.println("최고점수: " + max);
-				System.out.println("평균점수: " + avg);
+				System.out.printf("평균점수: %.3f" + avg);
 			} else if (selectNo == 5) {
 				run = false;
 
