@@ -5,45 +5,50 @@ public class Person {
 	private int age;
 	private double height;
 	private double weight;
-	
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public int getAge() {
 		return age;
 	}
+
 	public void setAge(int age) {
 		this.age = age;
-		if(age < 1)
+		if (age < 1)
 			this.age = 0;
-		else 
+		else
 			this.age = age;
 	}
+
 	public double getHeight() {
 		return height;
-		
+
 	}
+
 	public void setHeight(double height) {
 		this.height = height;
-		if(height < 0)
+		if (height < 0)
 			this.height = 0;
-		else 
+		else
 			this.height = height;
 	}
+
 	public double getWeight() {
 		return weight;
 	}
+
 	public void setWeight(double weight) {
 		this.weight = weight;
-		if(weight < 0)
+		if (weight < 0)
 			this.weight = 0;
-		else 
+		else
 			this.weight = weight;
 	}
-	
-	
-	
+
 }

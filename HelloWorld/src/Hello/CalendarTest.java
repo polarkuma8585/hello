@@ -2,7 +2,7 @@ package Hello;
 
 import java.util.Scanner;
 
-public class Calendar {
+public class CalendarTest {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("월을 입력하세요.");
