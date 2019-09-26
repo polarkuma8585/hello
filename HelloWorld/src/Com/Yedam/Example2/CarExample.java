@@ -1,4 +1,8 @@
-package Com.Yedam.Example;
+package Com.Yedam.Example2;
+
+
+import Com.Yedam.Example.HankookTire;
+import Com.Yedam.Example.KumhoTire;
 
 public class CarExample {
 	public static void main(String[] args) {
@@ -8,19 +12,19 @@ public class CarExample {
 			switch (problemLocation) {
 			case 1:
 				System.out.println("앞왼쪽 Hanlook 타이어로 교체.");
-				car.frontLeft = new HankookTire("앞왼쪽", 15);
+				car.tireArray[0] = new HankookTire("앞왼쪽", 15);
 				break;
 			case 2:
 				System.out.println("앞오른쪽 Kumho 타이어로 교체.");
-				car.frontRight = new KumhoTire("앞오른쪽", 17);	
+				car.tireArray[1] = new KumhoTire("앞오른쪽", 17);	
 				break;
 			case 3:
 				System.out.println("뒤왼쪽 Hankook 타이어로 교체.");
-				car.backLeft = new HankookTire("뒤왼쪽", 16);
+				car.tireArray[2] = new HankookTire("뒤왼쪽", 16);
 				break;
 			case 4:
 				System.out.println("뒤오른쪽 Kumho 타이어로 교체.");
-				car.backRight = new KumhoTire("뒤오른쪽", 15);
+				car.tireArray[3] = new KumhoTire("뒤오른쪽", 15);
 				break;
 
 			}
