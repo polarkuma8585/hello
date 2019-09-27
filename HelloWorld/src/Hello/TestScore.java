@@ -92,9 +92,9 @@ public class TestScore {
 				a++;
 				allsum += tl.getSum();
 			}
-				avg = (double) (allsum / a); // null 아닌 배열의 길이 값을 구하는 방법은??
-			}
-		
+			avg = (double) allsum / a; // null 아닌 배열의 길이 값을 구하는 방법은??
+		}
+
 		System.out.println("반 전체 총점: " + allsum + " 반 전체 평균: " + avg);
 
 	}
@@ -104,15 +104,19 @@ public class TestScore {
 		TestScoreLibrary temp = null;
 		System.out.println("총점 기준 정렬");
 		for (TestScoreLibrary tl : ScoreAry) {
-			if (ScoreAry[i].getSum() < ScoreAry[i + 1].getSum())
+			if (ScoreAry[i].getSum() < ScoreAry[i + 1].getSum()) {
 				temp = ScoreAry[i + 1];
 			ScoreAry[i + 1] = ScoreAry[i];
 			ScoreAry[i] = temp;
 
+			System.out.println("학생번호: " + ScoreAry[i].getStudentno() + " 학생이름 :" + ScoreAry[i].getName() + ", 총점: "
+					+ ScoreAry[i].getSum());
+			
+			}
+			
 		}
 
-		System.out.println("학생번호: " + ScoreAry[i].getStudentno() + " 학생이름 :" + ScoreAry[i].getName() + ", 총점: "
-				+ ScoreAry[i].getSum());
+		
 
 	}
 

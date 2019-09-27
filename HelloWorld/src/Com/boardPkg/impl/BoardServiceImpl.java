@@ -35,13 +35,27 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return boardAry;
 	}
-	public Board deleteBoard(int boardNo, Board[] boards) {
-		Board board = null;
+	@Override
+	public void deleteBoard(int boardNo, Board[] boards) {
 		for (int i = 0; i < boards.length; i++) {
 			if (boards[i] != null && boards[i].getBoardNo() == boardNo) {
-				board = boards[i];
+				boards[i] = null;
+				
 			}
 		}
-		return board = null;
+		
+	}
+
+	@Override
+	public void updateBoard(Board board, Board[] boards) {
+		for (int i = 0; i < boards.length; i++) {
+			if (boards[i] != null && boards[i].getBoardNo() == board.getBoardNo()) {
+				boards[i].setTitle(board.getTitle());
+				boards[i].setContents(board.getContents());
+				boards[i].setWriter(board.getWriter());
+			}
+		}
+		
+		
 	}
 }

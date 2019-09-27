@@ -2,9 +2,13 @@ package Com.boardPkg.model;
 
 public interface BoardService {
 	public void writeBoard(Board board, Board[] boards); //글작성.
+	
 	public Board getBoard(int boardNo, Board[] boards); //한건조회.
+	
 	public Board[] getBoardList(Board[] boards);//전체리스트.
-	//내용변경.
-	public void deleteBoard(int boards);//글삭제.
+	
+	public void updateBoard(Board boardNo, Board[] boards);//내용변경.
+	
+	public void deleteBoard(int boardNo, Board[] boards);//글삭제.
 
 }
