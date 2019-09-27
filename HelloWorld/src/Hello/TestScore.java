@@ -98,19 +98,23 @@ public class TestScore {
 	
 	public static void SumList() {
 		int i = 0;
-		int temp = 0;
+		TestScoreLibrary temp = null;
 		System.out.println("총점 기준 정렬");
 		for(TestScoreLibrary tl : ScoreAry) {
 				if(ScoreAry[i].getSum() < ScoreAry[i+1].getSum())
-					temp = ScoreAry[i+1].getSum();
-					//못함.
+					temp = ScoreAry[i+1];
+					ScoreAry[i+1] = ScoreAry[i];
+					ScoreAry[i] = temp;
+					
 				
 			}
 		
-			System.out.println("학생번호: " + tl.getStudentno()+ " 학생이름 :"+ tl.getName()+", 총점: " + tl.getSum());
+			System.out.println("학생번호: " + ScoreAry[i].getStudentno()+ " 학생이름 :"+ ScoreAry[i].getName()+", 총점: " + ScoreAry[i].getSum());
 				
 		}
 		
 		
-	}
 }
+
+
+
