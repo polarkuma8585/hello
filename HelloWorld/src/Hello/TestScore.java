@@ -106,17 +106,15 @@ public class TestScore {
 		for (TestScoreLibrary tl : ScoreAry) {
 			if (ScoreAry[i].getSum() < ScoreAry[i + 1].getSum()) {
 				temp = ScoreAry[i + 1];
-			ScoreAry[i + 1] = ScoreAry[i];
-			ScoreAry[i] = temp;
+				ScoreAry[i + 1] = ScoreAry[i];
+				ScoreAry[i] = temp;
 
-			System.out.println("학생번호: " + ScoreAry[i].getStudentno() + " 학생이름 :" + ScoreAry[i].getName() + ", 총점: "
-					+ ScoreAry[i].getSum());
-			
+				System.out.println("학생번호: " + ScoreAry[i].getStudentno() + " 학생이름 :" + ScoreAry[i].getName() + ", 총점: "
+						+ ScoreAry[i].getSum());
+
 			}
-			
-		}
 
-		
+		}
 
 	}
 

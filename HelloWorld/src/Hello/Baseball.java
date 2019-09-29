@@ -10,12 +10,18 @@ public class Baseball {
 		int[] ran = new int[3];
 		for (i = 0; i < ran.length; i++) {
 			ran[i] = (int) (Math.random() * 9 + 1);
-				if(ran[i] == ran[j])
-					
 		}
-					
+			for (j = 0; j < i; j++) {
+				if (ran[i] == ran[j]) {
+					i--;
+					break;
+				}
+			}
+
 			System.out.println(ran[i]);
-		
+
+		}
+
 		while (a) {
 			int[] insert = new int[3];
 			for (i = 0; i < insert.length; i++) {
@@ -24,6 +30,7 @@ public class Baseball {
 			}
 			int strike = 0;
 			int ball = 0;
+			int out = 0;
 			for (i = 0; i < ran.length; i++) {
 				for (j = 0; j < insert.length; j++) {
 					if (ran[i] == insert[j] && i == j) {
@@ -33,15 +40,16 @@ public class Baseball {
 						ball++;
 
 					}
+
 				}
-			}	System.out.println(strike+ "Strike"+ ball+ "ball");
+			}
+			System.out.println(strike + "Strike" + ball + "ball");
 			if (strike == 3) {
 				a = false;
-			
+
 			}
 
 		}
 
 	}
-
 }
