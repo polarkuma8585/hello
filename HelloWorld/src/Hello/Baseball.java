@@ -20,7 +20,7 @@ public class Baseball {
 
 			System.out.println(ran[i]);
 
-		}
+		
 
 		while (a) {
 			int[] insert = new int[3];
