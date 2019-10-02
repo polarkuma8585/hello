@@ -2,13 +2,13 @@ package Com.Yedam.generic;
 
 public class Utils {
 
-	public static <V extends Pair, K> void getValue(Pair<K,V>p1, Pair<K,V>p2) {
-		boolean bool1 = p1.getKey().equals(p2.getKey());
-		if(bool1 == true) {
-			return  
-		}else { 
+	public static <K, V> V getValue(Pair<K, V> p1, K p2) {
+		if (p1.getKey().equals(p2)) {
+			return p1.getValue();
+		} else {
 			return null;
 		}
-		
+
 	}
+
 }
