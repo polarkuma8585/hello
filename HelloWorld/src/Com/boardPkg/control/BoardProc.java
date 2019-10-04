@@ -1,20 +1,27 @@
 package Com.boardPkg.control;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import Com.boardPkg.impl.BoardCollectionImpl;
 import Com.boardPkg.impl.BoardServiceImpl;
 import Com.boardPkg.model.Board;
+import Com.boardPkg.model.BoardCollection;
 import Com.boardPkg.model.BoardService;
 
 public class BoardProc {
 	Scanner sc = new Scanner(System.in);
-	Board[] boardAry = new Board[10];
-	BoardService service = new BoardServiceImpl();
+//	Board[] boardAry = new Board[10];
+	List<Board> boardAry = new ArrayList<>();
+	
+//	BoardService service = new BoardServiceImpl();
+	BoardCollection service = new BoardCollectionImpl();
 
 	public void execute() {
 		while (true) {
 			System.out.println("메뉴선택하세요.");
-			System.out.println("1. 작성  2. 단건조회 3. 전체 조회 4. 삭제  5. 수정  6. 삭제");
+			System.out.println("1. 작성  2. 단건조회 3. 전체 조회 4. 삭제  5. 수정  6. 종료");
 			int menu = 0;
 //			try {
 				menu = sc.nextInt(); // error 발생 가능한 곳.
@@ -98,7 +105,7 @@ public class BoardProc {
 
 	public void getBoardList() {
 		System.out.println("전체글 조회");
-		Board[] resultAry = service.getBoardList(boardAry);
+		List<Board> resultAry = service.getBoardList(boardAry);
 		for (Board brd : resultAry) {
 			if (brd != null)
 				System.out.println(brd);
