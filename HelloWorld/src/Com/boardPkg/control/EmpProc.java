@@ -90,15 +90,19 @@ public class EmpProc {
 		emp.setFirstName(firstName);
 		emp.setLastName(lastName);
 		emp.setEmail(email);
-		emp.setHireDate(hireDate); //2010-10-05 날짜포맷
+		emp.setHireDate(hireDate); // 2010-10-05 날짜포맷
 		emp.setSalary(salary);
 		emp.setJobId(jobId);
 		service.insertEmployee(emp);
 	}
 
 	public void getBoard() {
-		System.out.println("게시글 번호를 입력하세요.");
-		int boardNo = sc.nextInt();
+		System.out.println("한건 조회");
+		System.out.println("조회할 사원 번호를 입력하세요.");
+
+		int empNo = sc.nextInt();
+		Employee emp = service.getEmployee(empNo);
+		System.out.println(emp);
 //		Board board = service.getBoard(boardNo, boardAry);
 //		System.out.println(board);
 //		for (int i = 0; i < boardAry.length; i++) {
@@ -126,11 +130,13 @@ public class EmpProc {
 //			}
 //		}
 	public void deleteBoard() {
-		System.out.println("지우실 게시글 번호를 입력하세요.");
-		int boardNo = sc.nextInt();
+		System.out.println("회원 삭제");
+		System.out.println("지우실 회원 번호를 입력하세요.");
+		int empNo = sc.nextInt();
+		service.deleteEmployee(empNo);
 //		service.deleteBoard(boardNo, boardAry);
 
 //		Board board = service.deleteBoard(boardNo, boardAry);
-		System.out.println(boardNo + " 번 게시글이 지워졌습니다.");
+		System.out.println(empNo + " 번 회원 정보가 지워졌습니다.");
 	}
 }

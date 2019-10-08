@@ -8,9 +8,16 @@ public class Employee {
 	private String hireDate;
 	private int salary;
 	private String jobId;
+	private String deptName;
 	
 	
 	
+	public String getDeptName() {
+		return deptName;
+	}
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
 	public int getEmployeeId() {
 		return employeeId;
 	}
@@ -56,8 +63,10 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
-				+ email + ", hireDate=" + hireDate + ", salary=" + salary + ", jobId=" + jobId + "]";
+				+ email + ", hireDate=" + hireDate + ", salary=" + salary + ", jobId=" + jobId + ", deptName="
+				+ deptName + "]";
 	}
+	
 	
 	
 }
