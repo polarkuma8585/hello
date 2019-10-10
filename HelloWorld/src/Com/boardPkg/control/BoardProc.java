@@ -14,11 +14,13 @@ public class BoardProc {
 	Scanner sc = new Scanner(System.in);
 //	Board[] boardAry = new Board[10];
 	List<Board> boardAry = new ArrayList<>();
-	
 //	BoardService service = new BoardServiceImpl();
 	BoardCollection service = new BoardCollectionImpl();
 
 	public void execute() {
+		
+		login_check();
+		
 		while (true) {
 			System.out.println("메뉴선택하세요.");
 			System.out.println("1. 작성  2. 단건조회 3. 전체 조회 4. 삭제  5. 수정  6. 종료");
@@ -51,7 +53,20 @@ public class BoardProc {
 		}
 		System.out.println("프로그램 종료.");
 	}
-
+	public void login_check() {
+			while(true) {
+					System.out.println("id 입력.");
+					String id = sc.nextLine();
+					System.out.println("passwd 입력.");
+					String passwd = sc.nextLine();
+					if(id.equals("user1") && passwd.equals("1234")) {
+						System.out.println("환영합니다.");
+						break;
+					}else {
+						System.out.println("id, passwd");
+					}
+			}
+	}
 	public void updateBoard() {
 		System.out.println("변경할 글번호: ");
 		int boardNo = sc.nextInt();
