@@ -21,31 +21,31 @@ public class BoardDBServiceImpl implements BoardDBService {
 	}
 
 	@Override
-	public List<Board> getBoardList() {
-
-		return null;
+	public List<BoardDB> getBoardList() {
+		List<BoardDB> list = dao.getList();
+		return list;
 	}
 
 	@Override
 	public BoardDB getBoard(int boardNo) {
-
-		return null;
+		
+		return dao.getBoard(boardNo); 
 	}
 
 	@Override
 	public List<BoardDB> getReply(int boardNo) {
 
-		return null;
+		return dao.getReplyList(boardNo);
 	}
 
 	@Override
 	public void insertReply(BoardDB board) {
-
+		dao.InsertReply(board);
 	}
 
 	@Override
 	public void updateBoard(BoardDB board) {
-
+		dao.updateBoard(board);
 	}
 
 	@Override

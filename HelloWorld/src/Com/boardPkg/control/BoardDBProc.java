@@ -20,7 +20,7 @@ public class BoardDBProc {
 
 		while (true) {
 			int menu = 0;
-			System.out.println("1.게시글 작성|2.게시글 리스트 |3.한건 조회|4.댓글 조회 |5.댓글 추가|6.수정| 7.삭제 |8.종료");
+			System.out.println("1.게시글 작성|2.게시글 리스트 |3.글 조회|4.댓글 조회 |5.댓글 추가|6.수정| 7.삭제 |8.종료");
 			menu = sc.nextInt();
 			sc.nextLine();
 			if (menu == 1) {
@@ -30,7 +30,7 @@ public class BoardDBProc {
 				System.out.println("게시글 리스트를 불러옵니다.");
 				getBoardList();
 			} else if (menu == 3) {
-				System.out.println("한건 조회.");
+				System.out.println("글 조회.");
 				getBoard();
 			} else if (menu == 4) {
 				System.out.println("댓글 조회.");
@@ -92,10 +92,47 @@ public class BoardDBProc {
 	}
 
 	public void getBoardList() {
+		List<BoardDB> brd = service.getBoardList();
+		for (BoardDB bbd : brd) {
 
+			System.out.println(bbd);
+		}
 	}
 
 	public void getBoard() {
+		System.out.println("글 조회");
+		System.out.println("조회할 글 번호: ");
+		int boardNo = sc.nextInt();
+		sc.nextLine();
+		// -- 원본글
+		System.out.println("------------[원본글]------------");
+		BoardDB board = service.getBoard(boardNo);
+		System.out.println("제목: " + board.getTitle());
+		System.out.println("내용: " + board.getContent());
+		System.out.println("작성자: " + board.getWriter());
+		System.out.println("작성일자: " + board.getCreationDate());
+		// -- 댓글
+		System.out.println("------------[댓   글]------------");
+		List<BoardDB> list = service.getReply(boardNo);
+		for (BoardDB brd : list) {
+			System.out.println("-> " + brd.getBoard_no() + "|" + brd.getContent() + "|" + brd.getCreationDate());
+		}
+		System.out.println("------------------------------");
+		System.out.println("1.댓글 작성 2.이전메뉴");
+		int subMenu = 0;
+		subMenu = sc.nextInt();
+		if (subMenu == 1) {
+			System.out.println("댓글 입력: ");
+			BoardDB board1 = new BoardDB();
+			String reply = sc.nextLine();
+			board1.setContent(reply);
+			board1.setOrigNo(boardNo);
+			board1.setWriter(loginId);
+			service.insertReply(board1);
+			System.out.println("댓글 입력 완료");
+		} else {
+			return;
+		}
 
 	}
 
@@ -104,10 +141,34 @@ public class BoardDBProc {
 	}
 
 	public void insertReply() {
+		System.out.println("댓글 등록");
+		System.out.println("댓글을 등록할 글 번호를 입력해주세요.");
+		int replyNo = sc.nextInt();
+		sc.nextLine();
+		System.out.println("내용을 입력하세요.");
+		String content = sc.nextLine();
 
+		BoardDB brd = new BoardDB();
+		brd.setContent(content);
+		brd.setWriter(loginId);
+		brd.setOrigNo(replyNo);
+		service.insertReply(brd);
 	}
 
 	public void reWriteBoard() {
+		System.out.println("변경할 글 번호: ");
+		int boardNo = sc.nextInt();
+		sc.nextLine();
+		System.out.println("제목 변경: ");
+		String title = sc.nextLine();
+		System.out.println("내용 변경: ");
+		String content = sc.nextLine();
+
+		BoardDB board = new BoardDB();
+		board.setBoard_no(boardNo);
+		board.setTitle(title);
+		board.setContent(content);
+		service.updateBoard(board);
 
 	}
 
