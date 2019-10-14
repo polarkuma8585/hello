@@ -168,11 +168,26 @@ public class BoardDBProc {
 		board.setBoard_no(boardNo);
 		board.setTitle(title);
 		board.setContent(content);
+		board.setWriter(loginId);
+
 		service.updateBoard(board);
 
 	}
 
 	public void deleteBoard() {
+		System.out.println("삭제할 글 번호: ");
+		int boardNo = sc.nextInt();
+		sc.nextLine();
+
+		BoardDB board = new BoardDB();
+
+		board.setBoard_no(boardNo);
+		board.setWriter(loginId);
+		System.out.println("B no: "+ board.getBoard_no());
+		System.out.println("B writer: "+ board.getWriter());
+		System.out.println("B content: "+ board.getContent());
+		
+		service.deleteBoard(board);
 
 	}
 }

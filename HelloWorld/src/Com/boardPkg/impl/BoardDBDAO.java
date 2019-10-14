@@ -15,6 +15,104 @@ public class BoardDBDAO {
 	ResultSet rs = null;
 	PreparedStatement pstmt = null;
 
+	public void eraseBoard1(BoardDB board) {
+		conn = DAO.getConnect();
+		List<BoardDB> list = getReplyList(board.getBoard_no());
+		if (list.size() > 0) {
+			System.out.println("댓글이 존재합니다.");
+		} else {
+			String sql = "delete from boards where board_no = ?";
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, board.getBoard_no());
+
+				int r = pstmt.executeUpdate();
+				System.out.println(r + "건이 삭제되었습니다.");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
+	}
+
+	public boolean checkForReply(int boardNo) {
+		conn = DAO.getConnect();
+		String sql = "select count(*) as cnt from boards" + " where orig_no = ?";
+		int rnt = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				rnt = rs.getInt("cnt");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (rnt > 0)
+			return true;
+		else
+			return false;
+
+	}
+
+	public void deleteBoard2(BoardDB board) {
+		conn = DAO.getConnect();
+		String sql = "delete from boards where board_no = ?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board.getBoard_no());
+			rs = pstmt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	public boolean checkResponsibility(BoardDB board) {
+		conn = DAO.getConnect();
+		String sql = " select count(*) as cnt from boards \r\n"
+				+ " where orig_no is null and board_no = ? and writer = ?";
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board.getBoard_no());
+			pstmt.setString(2, board.getWriter());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt("cnt");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (result > 0) {
+			return true;
+
+		} else {
+			return false;
+		}
+	}
+
 	public void updateBoard(BoardDB board) {
 		conn = DAO.getConnect();
 		String sql = "update boards set orig_no = orig_no ";
