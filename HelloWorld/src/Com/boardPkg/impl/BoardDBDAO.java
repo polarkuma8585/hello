@@ -15,7 +15,7 @@ public class BoardDBDAO {
 	ResultSet rs = null;
 	PreparedStatement pstmt = null;
 
-	public void eraseBoard1(BoardDB board) {
+	public void eraseBoard1(BoardDB board) { // 메소드에 댓글 존재유무 체크 및 삭제. 
 		conn = DAO.getConnect();
 		List<BoardDB> list = getReplyList(board.getBoard_no());
 		if (list.size() > 0) {
@@ -63,7 +63,7 @@ public class BoardDBDAO {
 
 	}
 
-	public void deleteBoard2(BoardDB board) {
+	public void deleteBoard2(BoardDB board) { // 삭제 구문만 존재. checkForReply 메소드를 통해 댓글유무 체크.
 		conn = DAO.getConnect();
 		String sql = "delete from boards where board_no = ?";
 
@@ -172,7 +172,9 @@ public class BoardDBDAO {
 
 	public List<BoardDB> getList() {
 		conn = DAO.getConnect();
-		String sql = "select * from boards where orig_no is null order by board_no desc";
+//		String sql = "select * from boards where orig_no is null order by board_no desc";
+		String sql = "select board_no, title, content, writer, creation_date, orig_no,"+
+		            "get_reply_cnt(b.board_no) as reply_count from boards b"; 
 		List<BoardDB> list = new ArrayList<>();
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -180,7 +182,7 @@ public class BoardDBDAO {
 			while (rs.next()) {
 				BoardDB board = new BoardDB();
 				board.setBoard_no(rs.getInt("board_no"));
-				board.setTitle(rs.getString("title"));
+				board.setTitle(rs.getString("title")+"("+rs.getString("reply_count")+")");
 				board.setContent(rs.getString("content"));
 				board.setWriter(rs.getString("writer"));
 				board.setCreationDate(rs.getString("creation_date"));
