@@ -6,6 +6,7 @@ public interface BoardDBService {
 	
 	// 로그인 체크
 	public String logCheck(String id, String passwd);
+
 	// 게시글 작성
 	public void insertBoard(BoardDB board);
 	// 게시글 리스트

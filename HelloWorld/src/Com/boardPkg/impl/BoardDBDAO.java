@@ -12,8 +12,8 @@ import Com.boardPkg.model.BoardDB;
 
 public class BoardDBDAO {
 	Connection conn = null;
-	ResultSet rs = null;
-	PreparedStatement pstmt = null;
+	ResultSet rs = null;  //DB의 값을 받아오는 객체
+	PreparedStatement pstmt = null;  // 캐시를 이용해 DB의 쿼리을 담는 객체
 
 	public void eraseBoard1(BoardDB board) { // 메소드에 댓글 존재유무 체크 및 삭제. 
 		conn = DAO.getConnect();
